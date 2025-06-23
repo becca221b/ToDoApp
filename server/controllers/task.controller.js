@@ -15,7 +15,7 @@ module.exports.createTask = (req, res) =>{
 
 module.exports.deleteAnExistingTask = (req, res)=>{
     Task.deleteOne({_id: req.params.id})
-    .then(result=> res.json({ result: result}))
+    .then(result=> res.json({ message: "Tarea eliminada correctamente", result: result}))
     .catch(err=> res.json({message: "Error al borrar una tarea", error: err}))
 }
 
@@ -25,6 +25,6 @@ module.exports.updateExistingTask = (req, res) => {
         return res.status(400).json({message: "Estado de completado inválido, debe ser un booleano"})
     }
     Task.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
-      .then(updatedTask => res.status(200).json({ task: updatedTask }))
+      .then(updatedTask => res.status(200).json({ message: "Tarea actualizada correctamente",task: updatedTask }))
       .catch(err => res.json({ message: "Error al actualizar una tarea", error: err }));
 };
