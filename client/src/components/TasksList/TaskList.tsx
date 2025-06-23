@@ -1,4 +1,5 @@
 import type {Task} from '../../types/Task';
+import { Card, Row, Col, Button } from 'react-bootstrap';
 import './TaskList.css';
 
 interface TaskListProps {
@@ -12,30 +13,49 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onToggle, onDelete }) => {
         <div className="todos">
             {(tasks.length > 0) &&
             tasks.map((task) => (
-                <div className="todo">
-                    <p style={{
-                        textDecoration: task.completed ? 'line-through' : 'none',
-                        cursor: 'pointer'
-                    }}>{task.title}</p>
-                    
-                
-                    <div className="mutations">
-                    
-                        <button
-                            className="todo_status"
-                            onClick={() => onToggle(task._id, task.completed)}
-                        >
-                            {task.completed ?  "☑" : "☐"}
-                        </button>
-                    </div>
+                <Card key={task._id} className="mb-3 shadow-sm">
+            <Card.Body>
+              <Row className="align-items-center">
+                <Col xs={8}>
+                  <Card.Title
+                    style={{
+                      textDecoration: task.completed ? 'line-through' : 'none',
+                      cursor: 'pointer',
+                      marginBottom: 0
+                    }}
+                    onClick={() => onToggle(task._id, task.completed)}
+                  >
+                    {task.title}
+                  </Card.Title>
+                  <Card.Text className="text-muted">
+                    {task.description}
+                  </Card.Text>
+                </Col>
 
-                    <button className="btn btn-danger btn-sm" onClick={() => onDelete(task._id)}>
-                        🗑
-                    </button>
-                </div>
+                <Col xs={4} className="text-end">
+                  <Button
+                    variant={task.completed ? 'success' : 'outline-secondary'}
+                    size="sm"
+                    className="me-2"
+                    onClick={() => onToggle(task._id, task.completed)}
+                  >
+                    {task.completed ? '☑' : '☐'}
+                  </Button>
+
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => onDelete(task._id)}
+                  >
+                    🗑
+                  </Button>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
                 
-            ))}
-        </div>
+          ))}
+      </div>
     )
 }
 
