@@ -24,10 +24,10 @@ const TaskForm: React.FC<TaskFormProps> = ({onCreate})=>{
     }
 
 return (
-    <Form action="" onSubmit={handleSubmit}>
-      <Form.Group as={Row} className="mb-3">
+    <form action="" onSubmit={handleSubmit}>
+      <Form.Group>
         <Form.Label column sm="4" className='labels'>Titulo de la tarea</Form.Label>
-         <Col sm="4">
+         <Col>
             <Form.Control
                 className="box"
                 type="text" 
@@ -56,7 +56,7 @@ return (
       
       <Button className="mt-4" type="submit">Agregar</Button>
 
-    </Form>
+    </form>
 );
 };
 

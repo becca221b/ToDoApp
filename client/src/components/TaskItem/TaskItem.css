@@ -31,7 +31,7 @@
 .task-title.completed {
   text-decoration: line-through;
   text-decoration-color: #28a745;
-  text-decoration-thickness: 2.5px;
+  text-decoration-thickness: 2px;
   color: #a0a0a0;
 }
 
