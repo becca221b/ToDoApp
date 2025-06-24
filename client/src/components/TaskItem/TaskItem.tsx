@@ -20,7 +20,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete }) => {
                     <Button
                         variant="outline-secondary"
                         size="sm"
-                        className={`rounded-circle icon-btn ${task.completed ? 'check-green' : ''}`}
+                        className={`icon-btn d-flex align-items-center ${task.completed ? 'check-green' : ''}`}
                         onClick={() => onToggle(task._id, task.completed)}
                     >
                         {task.completed ? '☑' : '☐'}
@@ -29,7 +29,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete }) => {
                     <Button
                         variant="dark"
                         size="sm"
-                        className="rounded-circle icon-btn"
+                        className="icon-btn d-flex align-items-center"
                         onClick={() => onDelete(task._id)}
                         >
                         🗑
