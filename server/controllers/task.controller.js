@@ -7,6 +7,9 @@ module.exports.findAllTasks = (req, res) =>{
 }
 
 module.exports.createTask = (req, res) =>{
+    if (!req.body.title) {
+        return res.status(400).json({ message: "El título no puede estar vacío." });
+    }
     Task.create(req.body)
     .then(newlyCreatedTask => res.status(201).json({ task: newlyCreatedTask}))
     .catch(err => res.json({ message: "Error al crear una tarea", error: err}))
