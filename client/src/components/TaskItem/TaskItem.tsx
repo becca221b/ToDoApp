@@ -18,7 +18,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete }) => {
 
                 <div className="task-buttons">
                     <Button
-                        variant="outline-secondary"
+                        variant="dark"
                         size="sm"
                         className={`icon-btn d-flex align-items-center ${task.completed ? 'check-green' : ''}`}
                         onClick={() => onToggle(task._id, task.completed)}
