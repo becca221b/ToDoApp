@@ -18,6 +18,12 @@ const router = require("./routes/tasks.routes");
 //use /api de prefijo para todas las rutas
 app.use("/api", router);
 
+app.use((req, res) => {
+    res.status(404).send(`
+        Ruta no existe: ${req.originalUrl}
+    `);
+});
+
 
 app.listen(PORT, ()=>{
     console.log('Server is listening on http://localhost:'+PORT);
