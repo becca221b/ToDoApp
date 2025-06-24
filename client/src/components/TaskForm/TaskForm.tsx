@@ -13,11 +13,27 @@ interface TaskFormProps {
 const TaskForm: React.FC<TaskFormProps> = ({onCreate})=>{
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [errors, setErrors] = useState<{ title?: string; description?: string }>({});
+
 
     const handleSubmit = (e: FormEvent) =>{
         e.preventDefault();
-        if (!title.trim()) return;
+        const newErrors: { title?: string; description?: string } = {};
 
+        if (!title.trim()) {
+            newErrors.title = "El título es obligatorio";
+        } 
+
+        if (description.length > 50) {
+            newErrors.description = "La descripción no puede tener más de 50 caracteres";
+        }
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            return;
+        }
+
+        setErrors({});
         onCreate(title, description);
         setTitle('');
         setDescription('');
@@ -37,6 +53,8 @@ return (
                 value= {title}
                 onChange={(e)=>setTitle(e.target.value)}
             />
+            {errors.title && <div className="text-danger small mt-1">{errors.title}</div>}
+
          </Col>
       </Form.Group>
 
@@ -53,6 +71,8 @@ return (
                 as = "textarea"
                 rows={2}
             />
+            {errors.description && <div className="text-danger small mt-1">{errors.description}</div>}
+
          </Col>
       </Form.Group>
       <div className="text-center">
