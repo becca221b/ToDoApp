@@ -12,6 +12,7 @@ const TaskFilter: React.FC<Props> = ({ filter, onChange }) => {
         <div className="task-filter">
             <label>
                 <input
+                className='me-1'
                 type="checkbox"
                 checked={filter === "completed"}
                 onChange={() => onChange(filter === "completed" ? "" : "completed")}
@@ -21,6 +22,7 @@ const TaskFilter: React.FC<Props> = ({ filter, onChange }) => {
 
             <label>
                 <input
+                className='me-1'
                 type="checkbox"
                 checked={filter === "pending"}
                 onChange={() => onChange(filter === "pending" ? "" : "pending")}
