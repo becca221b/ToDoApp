@@ -9,7 +9,7 @@ const MainPage: React.FC = () => {
     const [filter, setFilter] = useState<string>("");
 
     const fetchTasks = async () =>{
-        const res = await fetch('http://localhost:5000/api/tasks');
+        const res = await fetch('https://todoapp-uyig.onrender.com/api/tasks');
         if(filter === "completed") {
             const data = await res.json();
             setTasks(data.tasks.filter((task: Task) => task.completed));
@@ -28,7 +28,7 @@ const MainPage: React.FC = () => {
     }, [filter]);
 
     const createTask = async(title: string, description: string)=>{
-        const res = await fetch('http://localhost:5000/api/tasks',{
+        const res = await fetch('https://todoapp-uyig.onrender.com/api/tasks',{
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({title, description})
@@ -39,7 +39,7 @@ const MainPage: React.FC = () => {
     }
 
     const toggleTask = async (id: string, completed: boolean) => {
-        await fetch(`http://localhost:5000/api/tasks/${id}`, {
+        await fetch(`https://todoapp-uyig.onrender.com/api/tasks/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ completed: !completed })
@@ -48,7 +48,7 @@ const MainPage: React.FC = () => {
     }
 
     const deleteTask = async (id: string) => {
-        await fetch(`http://localhost:5000/api/tasks/${id}`, {
+        await fetch(`https://todoapp-uyig.onrender.com/api/tasks/${id}`, {
             method: 'DELETE'
         });
         setTasks((prev) => prev.filter((task) => task._id !== id));
