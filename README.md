@@ -38,16 +38,17 @@ El archivo .env almacena configuraciones sensibles o específicas del entorno, c
 
 
 Creá un archivo llamado .env en la raíz del proyecto y escribe lo siguiente:
-```
-# Cadena de conexión a MongoDB
-MONGO_URI=mongodb+srv://<usuario>:<contraseña>@cluster0.zjlutoe.mongodb.net/<bbdd>?retryWrites=true&w=majority&appName=Cluster0
 
+#### Cadena de conexión a MongoDB
+```
+MONGO_URI=mongodb+srv://<usuario>:<contraseña>@cluster0.zjlutoe.mongodb.net/<bbdd>?retryWrites=true&w=majority&appName=Cluster0
+```
 //Reemplaza <usuario>, <contraseña> y <bbdd> por las credenciales reales:
 Usuario: lrpmqrp
 Contraseña: pZm2ez9wtjjFRWCK
 bbdd: todos
 
-# Puerto donde correrá el servidor
+#### Puerto donde correrá el servidor
 PORT=5000
 
 
